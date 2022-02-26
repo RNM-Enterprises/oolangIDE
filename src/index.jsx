@@ -10,11 +10,11 @@ const wasm = import("../build/hackathon");
 
 wasm.then((m) => {
     const App = () => {
-        const [name, setName] = useState("");
+        const [textFieldValue, setTextFieldValue] = useState("");
 		const [fibResult, setFibResult] = useState();
 
-        const handleChange = (e) => {
-            setName(e.target.value);
+        const handleUserInput = (e) => {
+            setTextFieldValue(e.target.value);
         };
 
 		const compute = () => {
@@ -30,46 +30,47 @@ wasm.then((m) => {
         return (
                 <ChakraProvider >
                     <HStack alignContent={"center"} padding={1} paddingRight={12} paddingLeft={4}>
-                        
-                            <Text fontSize="6xl">Oolang</Text>
-                            <Spacer/>
-                            <IconButton
-                                background={"#148d3c"}
-                                size={"lg"}
-                                aria-label="Run code"
-                                icon={<ChevronRightIcon color={"white"}/>}
-								onClick={compute}/>
+                    
+                        <Text fontSize="6xl">Oolang</Text>
+                        <Spacer/>
+                        <IconButton
+                            background={"#148d3c"}
+                            size={"lg"}
+                            aria-label="Run code"
+                            icon={<ChevronRightIcon color={"white"}/>}
+                            onClick={compute}/>
                        
                     </HStack>
                     <Divider/>
                     <HStack p={4}>
                         <VStack justifyContent={"flex-start"} w={"50%"}>
                             <HStack>
-                            <Text fontSize="lg">Code</Text>
-                            <Spacer/>
-                            <IconButton
-                                background={"#cc0000"}
-                                size={"lg"}
-                                aria-label="Run code"
-                                icon={<CloseIcon color={"white"}/>}
-								onClick={compute}/>
+                                <Text fontSize="lg">Code</Text>
+                                <Spacer/>
+                                <IconButton
+                                    background={"#cc0000"}
+                                    size={"lg"}
+                                    aria-label="Run code"
+                                    icon={<CloseIcon color={"white"}/>}
+                                    onClick={compute}/>
                             </HStack>
                             
-                        <Textarea h="75vh" resize={"none"} onChange={handleChange} />
+                            <Textarea h="75vh" resize={"none"} onChange={handleUserInput} value={textFieldValue} />
                         </VStack>
                         
                         <VStack justifyContent={"flex-start"} w={"50%"}>
-                        <HStack>
-                            <Text fontSize="lg">Output</Text>
-                            <Spacer/>
-                            <IconButton
-                                background={"#cc0000"}
-                                size={"lg"}
-                                aria-label="Run code"
-                                icon={<CloseIcon color={"white"}/>}
-								onClick={compute}/>
+                            <HStack>
+                                <Text fontSize="lg">Output</Text>
+                                <Spacer/>
+                                <IconButton
+                                    background={"#cc0000"}
+                                    size={"lg"}
+                                    aria-label="Run code"
+                                    icon={<CloseIcon color={"white"}/>}
+                                    onClick={compute}/>
                             </HStack>
-                        <Textarea h="75vh" resize={"none"} value={fibResult}/>  
+
+                            <Textarea h="75vh" resize={"none"} value={fibResult}/>  
                         </VStack>  
                     </HStack>
                         
