@@ -26,9 +26,7 @@ wasm.then((m) => {
             console.log(m.fib(code))
 		}
 
-    
-
-        const os = ["o0","o1","o2","o3","o4","o5","o6","o7","o8","o9","o10","o11"];
+        const os = ["O","0","Ǿ","Ꮻ","⭕","𐍉","Ꝍ","◎","◯","⒪","ₒ"];
 
         return (
                 <ChakraProvider >
@@ -47,9 +45,9 @@ wasm.then((m) => {
                     
                     <HStack p={4}>
                         <VStack justifyContent={"flex-start"} w={"50%"}>
-                            <HStack justifyContent={"center"}>
+                            <HStack alignContent={"flex-start"} justifyContent={"space-between"}>
                             <Text fontSize="lg">Code</Text>
-                            <Spacer/>
+                            
                             <IconButton
                                 background={"#cc0000"}
                                 size={"lg"}
@@ -74,11 +72,11 @@ wasm.then((m) => {
 								onClick={() => setFibResult("")}/>
                             </HStack>
 
-                            <Textarea h="75vh" resize={"none"} value={fibResult}/>  
+                            <Textarea disabled color={"#000000"} h="75vh" resize={"none"} value={fibResult}/>  
                         </VStack>  
                     </HStack>
                     <HStack justifyContent={"space-between"} p={4}>
-                        {os.map((o) => <Button bg={"#0077ff"} color={"#FFFFFF"}>{o}</Button>)}
+                        {os.map((o) => <Button onClick={(e) => setCode(code + o)} bg={"#0077ff"} color={"#FFFFFF"}>{o}</Button>)}
                     </HStack>
                 </ChakraProvider>
         
