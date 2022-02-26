@@ -10,11 +10,11 @@ const wasm = import("../build/hackathon");
 
 wasm.then((m) => {
     const App = () => {
-        const [name, setName] = useState("");
+        const [textFieldValue, setTextFieldValue] = useState("");
 		const [fibResult, setFibResult] = useState();
 
-        const handleChange = (e) => {
-            setName(e.target.value);
+        const handleUserInput = (e) => {
+            setTextFieldValue(e.target.value);
         };
 
 		const compute = () => {
@@ -30,15 +30,15 @@ wasm.then((m) => {
         return (
                 <ChakraProvider >
                     <HStack alignContent={"center"} padding={1} paddingRight={12} paddingLeft={4}>
-                        
-                            <Text fontSize="6xl">Oolang</Text>
-                            <Spacer/>
-                            <IconButton
-                                background={"#148d3c"}
-                                size={"lg"}
-                                aria-label="Run code"
-                                icon={<ChevronRightIcon color={"white"}/>}
-								onClick={compute}/>
+                    
+                        <Text fontSize="6xl">Oolang</Text>
+                        <Spacer/>
+                        <IconButton
+                            background={"#148d3c"}
+                            size={"lg"}
+                            aria-label="Run code"
+                            icon={<ChevronRightIcon color={"white"}/>}
+                            onClick={compute}/>
                        
                     </HStack>
                     
@@ -69,7 +69,8 @@ wasm.then((m) => {
                                 icon={<CloseIcon color={"white"}/>}
 								onClick={() => setFibResult("")}/>
                             </HStack>
-                        <Textarea h="75vh" resize={"none"} value={fibResult}/>  
+
+                            <Textarea h="75vh" resize={"none"} value={fibResult}/>  
                         </VStack>  
                     </HStack>
                         
