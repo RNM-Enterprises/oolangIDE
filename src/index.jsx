@@ -41,7 +41,7 @@ wasm.then((m) => {
 								onClick={compute}/>
                        
                     </HStack>
-                    <Divider/>
+                    
                     <HStack p={4}>
                         <VStack justifyContent={"flex-start"} w={"50%"}>
                             <HStack>
@@ -52,10 +52,10 @@ wasm.then((m) => {
                                 size={"lg"}
                                 aria-label="Run code"
                                 icon={<CloseIcon color={"white"}/>}
-								onClick={compute}/>
+								/>
                             </HStack>
                             
-                        <Textarea h="75vh" resize={"none"} onChange={handleChange} />
+                        <Textarea h="75vh" className="input" resize={"none"} onChange={handleChange} />
                         </VStack>
                         
                         <VStack justifyContent={"flex-start"} w={"50%"}>
@@ -65,9 +65,9 @@ wasm.then((m) => {
                             <IconButton
                                 background={"#cc0000"}
                                 size={"lg"}
-                                aria-label="Run code"
+                                aria-label="clear Output"
                                 icon={<CloseIcon color={"white"}/>}
-								onClick={compute}/>
+								onClick={() => setFibResult("")}/>
                             </HStack>
                         <Textarea h="75vh" resize={"none"} value={fibResult}/>  
                         </VStack>  
