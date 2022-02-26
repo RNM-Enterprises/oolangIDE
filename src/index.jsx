@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const wasm = import("../build/hackathon");
 
@@ -20,7 +21,7 @@ wasm.then((m) => {
 		}
 
         return (
-            <>
+            <ChakraProvider>
                 <div>
                     <h1>Hi there</h1>
                     <button onClick={m.big_computation}>Run Computation</button>
@@ -31,7 +32,7 @@ wasm.then((m) => {
 					<button onClick={compute}>Compute</button>
 					<span>{ fibResult }</span>
                 </div>
-            </>
+            </ChakraProvider>
         );
     };
 
