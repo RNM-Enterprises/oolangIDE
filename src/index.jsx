@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import { ChakraProvider } from "@chakra-ui/react";
-import { Text, Grid, GridItem, Input, Button, IconButton} from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
-
+import { ChakraProvider, Divider, HStack, Spacer, VStack, Textarea,  Text, Button, IconButton,Box} from "@chakra-ui/react";
+import { ChevronRightIcon, CloseIcon } from "@chakra-ui/icons";
 
 const wasm = import("../build/hackathon");
 
@@ -20,79 +18,67 @@ wasm.then((m) => {
         };
 
 		const compute = () => {
-			setFibResult(m.fib(name));
+            if (fibResult != undefined){
+                setFibResult(fibResult +'\n'+ m.fib(name));
+            }else{
+                setFibResult(m.fib(name));
+            }
 		}
 
+        const os = ["o0","o1","o2","o3","o4","o5","o6","o7","o8","o9","o10","o11"];
+
         return (
-            <>
-                <ChakraProvider>
-                    <Grid templateColumns="repeat(12, 1fr)">
-                        <GridItem colSpan={11}>
-                            <Text fontSize="6xl">Oolang IDE</Text>
-                        </GridItem>
-                        <GridItem>
+                <ChakraProvider >
+                    <HStack alignContent={"center"} padding={1} paddingRight={12} paddingLeft={4}>
+                        
+                            <Text fontSize="6xl">Oolang</Text>
+                            <Spacer/>
                             <IconButton
+                                background={"#148d3c"}
+                                size={"lg"}
                                 aria-label="Run code"
-                                icon={<ChevronRightIcon />}
-								onClick={compute}
-                            />
-                        </GridItem>
-                    </Grid>
-                    <Grid templateColumns="repeat(13, 1fr)">
-                        <GridItem colSpan={6} w="100%">
-                            <Input height="75vh" onChange={handleChange} textAlign="center"/>
-                        </GridItem>
-                        <GridItem>Middle</GridItem>
-                        <GridItem colSpan={6} w="100%">
-                            <Input height="75vh" value={fibResult}/>
-                        </GridItem>
-                    </Grid>
-                    <Grid templateColumns="repeat(10, 1fr)">
-                        <GridItem>
-                            <Button>Button 1</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 2</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 3</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 4</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 5</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 6</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 7</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 8</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 9</Button>
-                        </GridItem>
-                        <GridItem>
-                            <Button>Button 10</Button>
-                        </GridItem>
-                    </Grid>
-                    {/* <div>
-                        <h1>Hi there</h1>
-                        <button onClick={m.big_computation}>
-                            Run Computation
-                        </button>
-                    </div>
-                    <div>
-                        <input type="text" onChange={handleChange} />
-                        <button onClick={handleClick}>Say hello!</button>
-                        <button onClick={compute}>Compute</button>
-                        <span>{fibResult}</span>
-                    </div> */}
+                                icon={<ChevronRightIcon color={"white"}/>}
+								onClick={compute}/>
+                       
+                    </HStack>
+                    <Divider/>
+                    <HStack p={4}>
+                        <VStack justifyContent={"flex-start"} w={"50%"}>
+                            <HStack>
+                            <Text fontSize="lg">Code</Text>
+                            <Spacer/>
+                            <IconButton
+                                background={"#cc0000"}
+                                size={"lg"}
+                                aria-label="Run code"
+                                icon={<CloseIcon color={"white"}/>}
+								onClick={compute}/>
+                            </HStack>
+                            
+                        <Textarea h="75vh" resize={"none"} onChange={handleChange} />
+                        </VStack>
+                        
+                        <VStack justifyContent={"flex-start"} w={"50%"}>
+                        <HStack>
+                            <Text fontSize="lg">Output</Text>
+                            <Spacer/>
+                            <IconButton
+                                background={"#cc0000"}
+                                size={"lg"}
+                                aria-label="Run code"
+                                icon={<CloseIcon color={"white"}/>}
+								onClick={compute}/>
+                            </HStack>
+                        <Textarea h="75vh" resize={"none"} value={fibResult}/>  
+                        </VStack>  
+                    </HStack>
+                        
+                    
+                    <HStack justifyContent={"space-between"} p={4}>
+                        {os.map((o) => <Button bg={"#0077ff"} color={"#FFFFFF"}>{o}</Button>)}
+                    </HStack>
                 </ChakraProvider>
-            </>
+        
         );
     };
 
