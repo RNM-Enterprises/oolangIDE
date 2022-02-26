@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider,Button,Input,IconButton,Box } from "@chakra-ui/react";
+import theme from "./theme";
 
 const wasm = import("../build/hackathon");
+
+
 
 wasm.then((m) => {
     const App = () => {
@@ -21,17 +24,12 @@ wasm.then((m) => {
 		}
 
         return (
-            <ChakraProvider>
-                <div>
-                    <h1>Hi there</h1>
-                    <button onClick={m.big_computation}>Run Computation</button>
-                </div>
-                <div>
-                    <input type="text" onChange={handleChange} />
-                    <button onClick={handleClick}>Say hello!</button>
-					<button onClick={compute}>Compute</button>
-					<span>{ fibResult }</span>
-                </div>
+            <ChakraProvider theme={theme} bg={"#FCF5EF"} >
+                <Box p={4}>
+                <Button>DOES THIS HAVE TEXT</Button>
+                <Input></Input>
+                </Box>
+                
             </ChakraProvider>
         );
     };
