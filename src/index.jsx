@@ -40,7 +40,14 @@ wasm.then((m) => {
                     paddingRight={12}
                     paddingLeft={4}
                 >
-                    <Text fontSize="6xl">Oolang</Text>
+                    <Text
+                        bgGradient="linear(to-l, #fea735, #fe7235)"
+                        bgClip="text"
+                        fontSize="6xl"
+                        fontWeight="extrabold"
+                    >
+                        Ꮻ0lang
+                    </Text>
                     <Spacer />
                     <IconButton
                         background={"#148d3c"}
@@ -67,27 +74,13 @@ wasm.then((m) => {
                                 onClick={() => setCode("")}
                             />
                         </HStack>
-                        <HStack>
-                            <Textarea
-                                disabled
-                                color={"#000000"}
-                                h="65vh"
-                                w="7vh"
-                                id="input"
-                                value={test}
-                                textAlign="right"
-                                resize={"none"}
-                                onChange={handleUserInput}
-                            />
-                            <Textarea
-                                h="65vh"
-                                w="81vh"
-                                id="input"
-                                resize={"none"}
-                                value={code}
-                                onChange={handleUserInput}
-                            />
-                        </HStack>
+                        <Textarea
+                            h="65vh"
+                            id="input"
+                            resize={"none"}
+                            value={code}
+                            onChange={handleUserInput}
+                        />
                     </VStack>
 
                     <VStack justifyContent={"flex-start"} w={"50%"}>
@@ -103,13 +96,13 @@ wasm.then((m) => {
                             />
                         </HStack>
 
-						<Textarea
-							disabled
-							color={"#000000"}
-							h="65vh"
-							resize={"none"}
-							value={fibResult}
-						/>
+                        <Textarea
+                            disabled
+                            color={"#000000"}
+                            h="65vh"
+                            resize={"none"}
+                            value={fibResult}
+                        />
                     </VStack>
                 </HStack>
                 <HStack justifyContent={"space-between"} p={4}>
