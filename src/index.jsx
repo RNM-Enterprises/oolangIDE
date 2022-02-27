@@ -103,15 +103,13 @@ wasm.then((m) => {
                             />
                         </HStack>
 
-                        <VStack>
-                            <Textarea
-                                disabled
-                                color={"#000000"}
-                                h="65vh"
-                                resize={"none"}
-                                value={fibResult}
-                            />
-                        </VStack>
+						<Textarea
+							disabled
+							color={"#000000"}
+							h="65vh"
+							resize={"none"}
+							value={fibResult}
+						/>
                     </VStack>
                 </HStack>
                 <HStack justifyContent={"space-between"} p={4}>
