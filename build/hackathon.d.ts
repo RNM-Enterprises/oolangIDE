@@ -12,3 +12,15 @@ export function welcome(name: string): void;
 * @returns {number}
 */
 export function fib(n: number): number;
+/**
+* @param {string} program
+* @param {string} input
+* @returns {number}
+*/
+export function run_result(program: string, input: string): number;
+/**
+* @param {string} program
+* @param {string} input
+* @returns {string}
+*/
+export function run_stdout(program: string, input: string): string;
