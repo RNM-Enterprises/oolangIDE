@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-import { ChakraProvider, Divider, HStack, Spacer, VStack, Textarea,  Text, Button, IconButton,Box} from "@chakra-ui/react";
+import { ChakraProvider, Divider, HStack, Spacer, VStack, Textarea,  Text, Button, IconButton,Box, Center} from "@chakra-ui/react";
 import { ChevronRightIcon, CloseIcon } from "@chakra-ui/icons";
 
 const wasm = import("../build/hackathon");
@@ -43,7 +43,7 @@ wasm.then((m) => {
                     <Text
                         bgGradient="linear(to-l, #fea735, #fe7235)"
                         bgClip="text"
-                        fontSize="6xl"
+                        fontSize="4xl"
                         fontWeight="extrabold"
                     >
                         Ꮻ0lang
@@ -59,15 +59,15 @@ wasm.then((m) => {
                 </HStack>
 
                 <HStack p={4}>
-                    <VStack justifyContent={"flex-start"} w={"50%"}>
+                    <VStack w={"50%"}>
                         <HStack
-                            alignContent={"flex-start"}
-                            justifyContent={"space-between"}
+                            alignContent={"center"}
+                            
                         >
                             <Text fontSize="lg">Code</Text>
-
+							<Spacer/>
                             <IconButton
-                                background={"#cc0000"}
+                                bgGradient="linear(to-l, #fea735, #fe7235)"
                                 size={"lg"}
                                 aria-label="Run code"
                                 icon={<CloseIcon color={"white"} />}
@@ -88,7 +88,7 @@ wasm.then((m) => {
                             <Text fontSize="lg">Output</Text>
                             <Spacer />
                             <IconButton
-                                background={"#cc0000"}
+                                bgGradient="linear(to-l, #fea735, #fe7235)"
                                 size={"lg"}
                                 aria-label="clear Output"
                                 icon={<CloseIcon color={"white"} />}
@@ -116,6 +116,25 @@ wasm.then((m) => {
                         </Button>
                     ))}
                 </HStack>
+                <Box
+                    w={"100%"}
+                    h={"50px"}
+                    p={2}
+                    bgGradient="linear(to-l, #fea735, #fe7235)"
+                    position={"relative"}
+                    top={"100%"}
+                >
+                    <Center>
+                        <Text bold color={"#ffffff"}>
+                            <a
+                                target="_blank"
+                                href="https://github.com/RNM-Enterprises/oolangIDE"
+                            >
+                                Check out the language spec here!
+                            </a>
+                        </Text>
+                    </Center>
+                </Box>
             </ChakraProvider>
         );
     };
