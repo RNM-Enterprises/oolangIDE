@@ -31,13 +31,13 @@ pub fn fib(n: u32) -> u32 {
 
 #[wasm_bindgen]
 pub fn run_result(program: &str, input: &str) -> i32 {
-	if let (Some(i) ,_ ) = oolang::run_buffered(program, input){i.into()}
+	if let (Some(i) ,_ ) = oolang::run_buffered(program, input.as_bytes()){i.into()}
 	else { -1 }
 }
 
 #[wasm_bindgen]
 pub fn run_stdout(program: &str, input: &str) -> String {
-	oolang::run_buffered(program, input).1
+	oolang::run_buffered(program, input.as_bytes()).1
 }
 
 // #[wasm_bindgen]
